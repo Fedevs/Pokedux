@@ -1,4 +1,4 @@
-import PokemonCard from '../index.js/PokemonCard';
+import PokemonCard from '../PokemonCard/index.js';
 import './PokemonList.css';
 
 const PokemonList = ({ pokemons }) => {
@@ -9,7 +9,8 @@ const PokemonList = ({ pokemons }) => {
           <PokemonCard
             key={pokemon.name}
             name={pokemon.name}
-            url={pokemon.url}
+            url={pokemon.sprites.front_default}
+            types={pokemon.types}
           />
         );
       })}
