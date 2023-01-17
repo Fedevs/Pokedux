@@ -1,8 +1,8 @@
+import PropTypes from 'prop-types';
 import PokemonCard from '../PokemonCard/index.js';
 import './PokemonList.css';
 
 const PokemonList = ({ pokemons }) => {
-  const asd = 123;
   return (
     <div className="PokemonList">
       {pokemons?.map((pokemon) => {
@@ -21,6 +21,10 @@ const PokemonList = ({ pokemons }) => {
 
 PokemonList.defaultProps = {
   pokemons: Array(10).fill(''),
+};
+
+PokemonList.propTypes = {
+  pokemons: PropTypes.array,
 };
 
 export default PokemonList;
