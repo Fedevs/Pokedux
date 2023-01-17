@@ -24,6 +24,7 @@ export const getPokemonDetails = async (pokemon) => {
       mode: 'cors',
       credentials: 'same-origin',
       headers: {
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
       },
     });
