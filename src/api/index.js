@@ -21,7 +21,7 @@ export const getPokemonDetails = async (pokemon) => {
   try {
     const response = await fetch(pokemon.url, {
       method: 'GET',
-      mode: 'cors',
+      mode: 'no-cors',
       credentials: 'same-origin',
       headers: {
         'Access-Control-Allow-Origin': '*',
