@@ -20,7 +20,7 @@ const PokemonList = ({ pokemons }) => {
 };
 
 PokemonList.defaultProps = {
-  pokemons: Array(10).fill(''),
+  pokemons: Array(10).fill({ name: '', url: '', image: '' }),
 };
 
 PokemonList.propTypes = {

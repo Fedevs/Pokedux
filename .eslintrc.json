@@ -16,5 +16,5 @@
     "sourceType": "module"
   },
   "plugins": ["react", "eslint-plugin-jsx"],
-  "rules": { "react/react-in-jsx-scope": "off" }
+  "rules": { "react/react-in-jsx-scope": "off", "no-debugger": "off" }
 }

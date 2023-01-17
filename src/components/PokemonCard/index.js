@@ -10,8 +10,8 @@ const PokemonCard = ({ name, url, types }) => {
       cover={<img src={url} alt={name} />}
       extra={<StarOutlined />}
     >
-      {types.map((type) => {
-        return <Meta description={type.type.name} key={name} />;
+      {types.map((type, index) => {
+        return <Meta description={type.type.name} key={`${name}${index}`} />;
       })}
     </Card>
   );
