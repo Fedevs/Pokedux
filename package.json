@@ -17,6 +17,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "eslint",
+    "prettier": "prettier --write ./**/*.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install"

@@ -1,12 +1,12 @@
-import { useEffect } from "react";
-import { Col } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import Searcher from "./components/Searcher";
-import PokemonList from "./components/PokemonList/index.js";
-import { getPokemons, getPokemonDetails } from "./api";
-import { setPokemons } from "./actions";
-import logo from "./statics/logo.svg";
-import "./App.css";
+import { useEffect } from 'react';
+import { Col } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import Searcher from './components/Searcher';
+import PokemonList from './components/PokemonList/index.js';
+import { getPokemons, getPokemonDetails } from './api';
+import { setPokemons } from './actions';
+import logo from './statics/logo.svg';
+import './App.css';
 
 function App() {
   const pokemons = useSelector((state) => state.pokemons);
@@ -16,7 +16,7 @@ function App() {
     const fetchPokemons = async () => {
       const response = await getPokemons();
       const pokemonsDetails = await Promise.all(
-        response.map((pokemon) => getPokemonDetails(pokemon))
+        response.map((pokemon) => getPokemonDetails(pokemon)),
       );
       dispatch(setPokemons(pokemonsDetails));
     };
