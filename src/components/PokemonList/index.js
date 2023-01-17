@@ -2,6 +2,7 @@ import PokemonCard from '../PokemonCard/index.js';
 import './PokemonList.css';
 
 const PokemonList = ({ pokemons }) => {
+  const asd = 123;
   return (
     <div className="PokemonList">
       {pokemons?.map((pokemon) => {
