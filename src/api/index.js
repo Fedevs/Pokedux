@@ -4,9 +4,10 @@ export const getPokemons = async () => {
   try {
     const response = await fetch(API_URL, {
       method: 'GET',
-      mode: 'cors',
+      mode: 'no-cors',
       credentials: 'same-origin',
       headers: {
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
       },
     });
