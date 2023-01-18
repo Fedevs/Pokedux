@@ -13,7 +13,7 @@ const PokemonList = ({ pokemons }) => {
             name={pokemon.name}
             url={pokemon.sprites.front_default}
             types={pokemon.types}
-            isFavorite={pokemon.isFavorite}
+            isFavourite={pokemon.isFavourite}
           />
         );
       })}
