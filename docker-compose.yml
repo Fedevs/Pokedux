@@ -1,0 +1,9 @@
+version: '3.9'
+services:
+  pokedux:
+    build:
+      context: .
+    ports:
+      - '3000:3000'
+    image: pokedux
+    container_name: pokedux
