@@ -3,7 +3,7 @@ services:
   pokedux:
     build:
       context: .
+      dockerfile: docker/dev.Dockerfile
     ports:
       - '3000:3000'
-    image: pokedux
     container_name: pokedux
