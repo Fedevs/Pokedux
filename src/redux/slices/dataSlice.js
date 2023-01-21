@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { setLoading } from './uiSlice';
 import { getPokemonDetails, getPokemons } from '../../api';
 
-const initialState = { pokemons: [] };
+const initialState = { pokemons: [], searchText: '' };
 
 export const fetchPokemonWithDetails = createAsyncThunk(
   'data/fetchPokemonsWithDetails',
@@ -39,8 +39,11 @@ const dataSlice = createSlice({
           !state.pokemons[currentIndex].isFavourite;
       }
     },
+    setSearchText: (state, action) => {
+      state.searchText = action.payload;
+    },
   },
 });
 
-export const { setFavourite, setPokemons } = dataSlice.actions;
+export const { setFavourite, setPokemons, setSearchText } = dataSlice.actions;
 export default dataSlice.reducer;

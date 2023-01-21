@@ -4,6 +4,7 @@ export {
   dataReducer,
   setFavourite,
   setPokemons,
+  setSearchText,
   fetchPokemonWithDetails,
   uiReducer,
   setLoading,

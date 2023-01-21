@@ -5,18 +5,28 @@ import { Spin } from 'antd';
 import PokemonList from '../../components/PokemonList';
 import Searcher from '../../components/Searcher';
 
-import { fetchPokemonWithDetails } from '../../redux';
+import { fetchPokemonWithDetails, setSearchText } from '../../redux';
 import logo from '../../statics/logo.svg';
 import './Home.css';
 
 const Home = () => {
   const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
+  const searchText = useSelector((state) => state.data.searchText);
+
   const loading = useSelector((state) => state.ui.loading);
   const dispatch = useDispatch();
+  const filteredPokemons = pokemons.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(searchText),
+  );
 
   useEffect(() => {
     dispatch(fetchPokemonWithDetails());
   }, []);
+
+  const handleOnChange = (evt) => {
+    const name = evt.target.value;
+    dispatch(setSearchText(name.toLowerCase()));
+  };
 
   return (
     <div className="home">
@@ -24,12 +34,12 @@ const Home = () => {
         <img src={logo} alt="Pokedux" width={300} />
       </div>
       <div className="search-bar">
-        <Searcher />
+        <Searcher loading={loading} onChange={handleOnChange} />
       </div>
       {loading ? (
         <Spin spinning size="large" />
       ) : (
-        <PokemonList pokemons={pokemons} />
+        <PokemonList pokemons={filteredPokemons} />
       )}
     </div>
   );
