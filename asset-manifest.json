@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.css": "/Pokedux/static/css/main.f0848b0f.css",
-    "main.js": "/Pokedux/static/js/main.2c0e05ff.js",
+    "main.css": "/Pokedux/static/css/main.5220831f.css",
+    "main.js": "/Pokedux/static/js/main.d09adc25.js",
     "static/media/logo.svg": "/Pokedux/static/media/logo.0905522d6d18ceaafa60a31e87c99e88.svg",
+    "static/media/background.jpg": "/Pokedux/static/media/background.ff38b5d6b035a6e33ebd.jpg",
     "index.html": "/Pokedux/index.html",
-    "main.f0848b0f.css.map": "/Pokedux/static/css/main.f0848b0f.css.map",
-    "main.2c0e05ff.js.map": "/Pokedux/static/js/main.2c0e05ff.js.map"
+    "main.5220831f.css.map": "/Pokedux/static/css/main.5220831f.css.map",
+    "main.d09adc25.js.map": "/Pokedux/static/js/main.d09adc25.js.map"
   },
   "entrypoints": [
-    "static/css/main.f0848b0f.css",
-    "static/js/main.2c0e05ff.js"
+    "static/css/main.5220831f.css",
+    "static/js/main.d09adc25.js"
   ]
 }
