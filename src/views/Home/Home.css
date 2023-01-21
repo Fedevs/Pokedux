@@ -1,0 +1,20 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+
+.logo-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  display: grid;
+  grid-template-columns: minmax(250px, 400px);
+  justify-content: center;
+  margin-bottom: 20px;
+}

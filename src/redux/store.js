@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { logger } from '../middlewares';
+import { logger, CapitalizePokemonName } from '../middlewares';
 import { dataReducer, uiReducer } from './slices';
 
 const actionSanitizer = (action) => {
@@ -12,7 +12,9 @@ const configureStoreOptions = {
   reducer: { data: dataReducer, ui: uiReducer },
   devTools: { actionSanitizer },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }).concat(logger),
+    getDefaultMiddleware({ serializableCheck: false })
+      .concat(logger)
+      .concat(CapitalizePokemonName),
 };
 
 export const store = configureStore(configureStoreOptions);

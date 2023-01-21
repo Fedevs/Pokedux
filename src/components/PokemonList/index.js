@@ -4,7 +4,7 @@ import './PokemonList.css';
 
 const PokemonList = ({ pokemons }) => {
   return (
-    <div className="PokemonList">
+    <div className="pokemon-list">
       {pokemons?.map((pokemon) => {
         return (
           <PokemonCard
@@ -12,7 +12,6 @@ const PokemonList = ({ pokemons }) => {
             id={pokemon.id}
             name={pokemon.name}
             url={pokemon.sprites.front_default}
-            types={pokemon.types}
             isFavourite={pokemon.isFavourite}
           />
         );
