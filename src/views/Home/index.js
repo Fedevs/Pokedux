@@ -4,9 +4,11 @@ import { Spin } from 'antd';
 
 import PokemonList from '../../components/PokemonList';
 import Searcher from '../../components/Searcher';
+import EmptyState from '../../components/EmptyState';
 
 import { fetchPokemonWithDetails, setSearchText } from '../../redux';
 import logo from '../../statics/logo.svg';
+
 import './Home.css';
 
 const Home = () => {
@@ -31,15 +33,17 @@ const Home = () => {
   return (
     <div className="home">
       <div className="logo-container">
-        <img src={logo} alt="Pokedux" width={300} />
+        <img src={logo} alt="Pokedux" />
       </div>
       <div className="search-bar">
         <Searcher loading={loading} onChange={handleOnChange} />
       </div>
       {loading ? (
         <Spin spinning size="large" />
-      ) : (
+      ) : filteredPokemons.length ? (
         <PokemonList pokemons={filteredPokemons} />
+      ) : (
+        <EmptyState />
       )}
     </div>
   );
