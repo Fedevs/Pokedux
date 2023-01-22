@@ -11,6 +11,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const themeOptions = {
   token: {
     fontFamily: 'Roboto Mono',
+    colorTextBase: '#63288F',
+    colorPrimaryHover: '#63288F',
   },
 };
 
