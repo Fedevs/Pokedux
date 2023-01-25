@@ -52,6 +52,7 @@ const Home = () => {
               key={generation.id}
               id={generation.id}
               place={generation.place}
+              page={page}
               onClick={handleGenerationCardClick}
             />
           );

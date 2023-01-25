@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import './GenerationCard.css';
 
-const GenerationCard = ({ id, place, onClick }) => {
+const GenerationCard = ({ id, place, page, onClick }) => {
+  const className = `generation-card${page === id ? ' --active' : ''} `;
   return (
-    <button className="generation-card" onClick={(e) => onClick(id, e)}>
+    <button className={className} onClick={(e) => onClick(id, e)}>
       {place}
     </button>
   );
@@ -12,6 +13,7 @@ const GenerationCard = ({ id, place, onClick }) => {
 GenerationCard.propTypes = {
   id: PropTypes.number,
   place: PropTypes.string,
+  page: PropTypes.number,
   onClick: PropTypes.func,
 };
 

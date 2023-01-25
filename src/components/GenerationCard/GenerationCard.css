@@ -1,9 +1,18 @@
 .generation-card {
+  position: relative;
   padding: 10px 20px;
   max-width: 300px;
   border-radius: 6px;
   background: #fcfcfc;
-  border: 1px solid #63288f;
+  border: 1px solid #8436bf;
   font-weight: bold;
   font-family: 'Roboto Mono';
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.generation-card:hover,
+.--active {
+  background-color: #8436bf;
+  color: #fcfcfc;
 }
