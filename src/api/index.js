@@ -1,4 +1,9 @@
-export const getPokemons = async ({ offset, limit }) => {
+import { pokemonGenerations } from '../constants/pokemonPerGeneration';
+
+export const getPokemons = async (page) => {
+  const { offset, limit } = pokemonGenerations.find(
+    (generation) => generation.id === page,
+  );
   const API_URL = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}}`;
   try {
     const response = await fetch(API_URL);

@@ -6,9 +6,9 @@ const initialState = { pokemons: [], searchText: '' };
 
 export const fetchPokemonWithDetails = createAsyncThunk(
   'data/fetchPokemonsWithDetails',
-  async ({ offset, limit }, { dispatch }) => {
+  async (page, { dispatch }) => {
     dispatch(setLoading(true));
-    const pokemons = await getPokemons({ offset, limit });
+    const pokemons = await getPokemons(page);
     const pokemonsDetails = await Promise.all(
       pokemons.map((pokemon) => getPokemonDetails(pokemon)),
     );

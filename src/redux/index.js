@@ -10,6 +10,4 @@ export {
   setLoading,
   paginationReducer,
   setPage,
-  setLimit,
-  setOffset,
 } from './slices';

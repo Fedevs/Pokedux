@@ -7,7 +7,7 @@ import Searcher from '../../components/Searcher';
 import EmptyState from '../../components/EmptyState';
 import GenerationCard from '../../components/GenerationCard';
 
-import { fetchPokemonWithDetails, setSearchText } from '../../redux';
+import { fetchPokemonWithDetails, setPage, setSearchText } from '../../redux';
 import { pokemonGenerations } from '../../constants/pokemonPerGeneration';
 import logo from '../../statics/logo.svg';
 
@@ -16,26 +16,25 @@ import './Home.css';
 const Home = () => {
   const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
   const searchText = useSelector((state) => state.data.searchText);
-  const offset = useSelector((state) => state.pagination.offset);
-  const limit = useSelector((state) => state.pagination.limit);
-
+  const page = useSelector((state) => state.pagination.page);
   const loading = useSelector((state) => state.ui.loading);
+
   const dispatch = useDispatch();
   const filteredPokemons = pokemons.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(searchText),
   );
 
   useEffect(() => {
-    dispatch(fetchPokemonWithDetails({ offset, limit }));
-  }, []);
+    dispatch(fetchPokemonWithDetails(page));
+  }, [page]);
 
   const handleOnChange = (evt) => {
     const name = evt.target.value;
     dispatch(setSearchText(name.toLowerCase()));
   };
 
-  const handleGenerationCardClick = () => {
-    console.log('test');
+  const handleGenerationCardClick = (id) => {
+    if (page !== id) dispatch(setPage(id));
   };
 
   return (
@@ -51,6 +50,7 @@ const Home = () => {
           return (
             <GenerationCard
               key={generation.id}
+              id={generation.id}
               place={generation.place}
               onClick={handleGenerationCardClick}
             />
