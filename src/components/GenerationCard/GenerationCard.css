@@ -1,14 +1,15 @@
 .generation-card {
-  position: relative;
-  padding: 10px 20px;
-  max-width: 300px;
-  border-radius: 6px;
   background: #fcfcfc;
+  border-radius: 6px;
   border: 1px solid #8436bf;
-  font-weight: bold;
-  font-family: 'Roboto Mono';
   cursor: pointer;
+  font-family: 'Roboto Mono';
+  font-weight: bold;
+  max-width: 300px;
+  padding: 10px 20px;
+  position: relative;
   transition: all 0.3s ease;
+  width: 150px;
 }
 
 .generation-card:hover,

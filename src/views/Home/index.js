@@ -33,8 +33,11 @@ const Home = () => {
     dispatch(setSearchText(name.toLowerCase()));
   };
 
-  const handleGenerationCardClick = (id) => {
-    if (page !== id) dispatch(setPage(id));
+  const handleGenerationCardClick = (id, evt) => {
+    if (page !== id) {
+      evt.target.scrollIntoView();
+      dispatch(setPage(id));
+    }
   };
 
   return (
