@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import PokemonCard from '../PokemonCard/index.js';
+import PokemonCard from 'components/PokemonCard/index.js';
 import './PokemonList.css';
 
 const PokemonList = ({ pokemons }) => {

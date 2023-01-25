@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 import { Card } from 'antd';
-import StarButton from '../StarButton';
+import StarButton from 'components/StarButton';
 import { useDispatch } from 'react-redux';
 import { setFavourite } from '../../redux';
 

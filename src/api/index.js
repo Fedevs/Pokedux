@@ -1,4 +1,4 @@
-import { pokemonGenerations } from '../constants/pokemonPerGeneration';
+import { pokemonGenerations } from 'constants/pokemonPerGeneration';
 
 export const getPokemons = async (page) => {
   const { offset, limit } = pokemonGenerations.find(

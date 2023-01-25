@@ -2,14 +2,14 @@ import { useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Spin } from 'antd';
 
-import PokemonList from '../../components/PokemonList';
-import Searcher from '../../components/Searcher';
-import EmptyState from '../../components/EmptyState';
-import GenerationCard from '../../components/GenerationCard';
+import PokemonList from 'components/PokemonList';
+import Searcher from 'components/Searcher';
+import EmptyState from 'components/EmptyState';
+import GenerationCard from 'components/GenerationCard';
 
 import { fetchPokemonWithDetails, setPage, setSearchText } from '../../redux';
-import { pokemonGenerations } from '../../constants/pokemonPerGeneration';
-import logo from '../../statics/logo.svg';
+import { pokemonGenerations } from 'constants/pokemonPerGeneration';
+import logo from 'statics/logo.svg';
 
 import './Home.css';
 
