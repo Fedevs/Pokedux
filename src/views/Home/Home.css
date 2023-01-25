@@ -34,3 +34,22 @@
   justify-content: center;
   margin-bottom: 20px;
 }
+
+.generation-card-container {
+  margin-bottom: 20px;
+  display: flex;
+  overflow-x: scroll;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  gap: 5px;
+}
+
+.generation-card-container::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 850px) {
+  .generation-card-container {
+    justify-content: center;
+  }
+}
