@@ -8,4 +8,8 @@ export {
   fetchPokemonWithDetails,
   uiReducer,
   setLoading,
+  paginationReducer,
+  setPage,
+  setLimit,
+  setOffset,
 } from './slices';

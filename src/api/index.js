@@ -1,6 +1,5 @@
-const API_URL = 'https://pokeapi.co/api/v2/pokemon?limit=151';
-
-export const getPokemons = async () => {
+export const getPokemons = async ({ offset, limit }) => {
+  const API_URL = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}}`;
   try {
     const response = await fetch(API_URL);
     if (response.ok) {
