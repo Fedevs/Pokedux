@@ -6,12 +6,13 @@ const PokemonList = ({ pokemons }) => {
   return (
     <div className="pokemon-list">
       {pokemons?.map((pokemon) => {
+        const sprite = pokemon.sprites.other['official-artwork'].front_default;
         return (
           <PokemonCard
             key={pokemon.name}
             id={pokemon.id}
             name={pokemon.name}
-            url={pokemon.sprites.front_default}
+            url={sprite}
             isFavourite={pokemon.isFavourite}
           />
         );

@@ -23,7 +23,7 @@ const PokemonCard = ({ id, name, url, isFavourite }) => {
       headStyle={headStyle}
       hoverable
       title={name}
-      cover={<img src={url} alt={name} />}
+      cover={<img src={url} alt={name} loading={'lazy'} />}
       extra={
         <StarButton isFavourite={isFavourite} onClick={handleisFavourite} />
       }

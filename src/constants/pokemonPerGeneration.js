@@ -7,6 +7,5 @@ export const pokemonGenerations = [
   { id: 6, place: 'Kalos', description: '6th Gen', limit: 72, offset: 649 },
   { id: 7, place: 'Alola', description: '7th Gen', limit: 88, offset: 721 },
   { id: 8, place: 'Galar', description: '8th Gen', limit: 96, offset: 809 },
-  // No info in PokeApi yet
-  // { id: 9, place: 'Paldea', description: '9th Gen', limit: 9, offset: 905 },
+  { id: 9, place: 'Paldea', description: '9th Gen', limit: 103, offset: 905 },
 ];
