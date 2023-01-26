@@ -1,0 +1,43 @@
+.title-loading {
+  -webkit-animation-direction: alternate;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation: shimmer 2s ease-in-out infinite;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+  animation: shimmer 2s ease-in-out infinite;
+  background-color: #f2f2f2;
+  border-radius: 4px;
+  height: 20px;
+  width: 150px;
+}
+
+.star-loading {
+  -webkit-animation-direction: alternate;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation: shimmer 2s ease-in-out infinite;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+  animation: shimmer 2s ease-in-out infinite;
+  background-color: #f2f2f2;
+  border-radius: 6px;
+  height: 40px;
+  width: 40px;
+}
+
+@-webkit-keyframes shimmer {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}

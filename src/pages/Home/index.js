@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { Spin } from 'antd';
 
 import PokemonList from 'components/PokemonList';
 import Searcher from 'components/Searcher';
@@ -61,13 +60,8 @@ const Home = () => {
           );
         })}
       </div>
-      {loading ? (
-        <Spin spinning size="large" />
-      ) : filteredPokemons.length ? (
-        <PokemonList pokemons={filteredPokemons} />
-      ) : (
-        <EmptyState />
-      )}
+      <PokemonList pokemons={filteredPokemons} />
+      {!loading && !filteredPokemons.length && <EmptyState />}
     </div>
   );
 };

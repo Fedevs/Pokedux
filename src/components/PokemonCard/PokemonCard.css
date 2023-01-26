@@ -1,3 +1,9 @@
 .pokemon-card {
   box-shadow: 2px 2px 5px rgba(99, 40, 143, 0.1);
+  min-height: 310px;
+}
+
+.card-cover {
+  margin: 20px auto;
+  max-width: 200px;
 }

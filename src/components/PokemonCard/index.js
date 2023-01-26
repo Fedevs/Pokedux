@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
-
 import { Card } from 'antd';
 import StarButton from 'components/StarButton';
 import { useDispatch } from 'react-redux';
 import { setFavourite } from '../../redux';
-
 import './PokemonCard.css';
 
 const PokemonCard = ({ id, name, url, isFavourite }) => {
   const dispatch = useDispatch();
+
   const headStyle = {
     boxShadow: '0px 1px 8px rgba(0, 0, 0, 0.1)',
   };
@@ -23,7 +22,9 @@ const PokemonCard = ({ id, name, url, isFavourite }) => {
       headStyle={headStyle}
       hoverable
       title={name}
-      cover={<img src={url} alt={name} loading={'lazy'} />}
+      cover={
+        <img className="card-cover" src={url} alt={name} loading={'lazy'} />
+      }
       extra={
         <StarButton isFavourite={isFavourite} onClick={handleisFavourite} />
       }

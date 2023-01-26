@@ -1,0 +1,33 @@
+.skeleton-image {
+  -webkit-animation-direction: alternate;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: skeleton;
+  animation-direction: alternate;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: skeleton;
+  margin: 20px auto;
+  max-width: 200px;
+  opacity: 0.1;
+}
+
+@-webkit-keyframes skeleton {
+  0% {
+    -webkit-filter: grayscale(0%);
+  }
+  100% {
+    -webkit-filter: grayscale(100%);
+  }
+}
+
+@keyframes skeleton {
+  0% {
+    filter: grayscale(0%);
+  }
+  100% {
+    filter: grayscale(100%);
+  }
+}
