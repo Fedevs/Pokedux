@@ -1,5 +1,5 @@
 import { Empty } from 'antd';
-import emptyBall from 'statics/emptyball.png';
+import emptyBall from 'statics/emptyball.webp';
 import './EmptyState.css';
 
 const EmptyState = () => {
