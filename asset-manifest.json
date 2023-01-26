@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/Pokedux/static/css/main.3bb6b92b.css",
-    "main.js": "/Pokedux/static/js/main.1af92dd1.js",
+    "main.css": "/Pokedux/static/css/main.69dc941d.css",
+    "main.js": "/Pokedux/static/js/main.f82fa8c6.js",
     "static/media/logo.svg": "/Pokedux/static/media/logo.0905522d6d18ceaafa60a31e87c99e88.svg",
     "static/media/background.png": "/Pokedux/static/media/background.1cdcc2e709c9645c63cf.png",
+    "static/media/pokeball.webp": "/Pokedux/static/media/pokeball.a5e8c429c32e3955ed8b.webp",
     "static/media/emptyball.png": "/Pokedux/static/media/emptyball.dea70aa4c9ccdb1b15e2.png",
     "index.html": "/Pokedux/index.html",
-    "main.3bb6b92b.css.map": "/Pokedux/static/css/main.3bb6b92b.css.map",
-    "main.1af92dd1.js.map": "/Pokedux/static/js/main.1af92dd1.js.map"
+    "main.69dc941d.css.map": "/Pokedux/static/css/main.69dc941d.css.map",
+    "main.f82fa8c6.js.map": "/Pokedux/static/js/main.f82fa8c6.js.map"
   },
   "entrypoints": [
-    "static/css/main.3bb6b92b.css",
-    "static/js/main.1af92dd1.js"
+    "static/css/main.69dc941d.css",
+    "static/js/main.f82fa8c6.js"
   ]
 }
