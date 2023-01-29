@@ -29,8 +29,21 @@
 }
 
 .search-bar {
-  display: grid;
-  grid-template-columns: minmax(200px, 350px);
+  display: flex;
   justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
+}
+
+.search-bar .nav {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.search-bar .nav li {
+  list-style-type: none;
+}
+
+.search-bar .nav li a {
+  text-decoration: none;
 }

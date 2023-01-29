@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import { Input } from 'antd';
+import './Searcher.css';
 
 const Searcher = ({ onChange, loading }) => {
   return (
     <Input.Search
+      className="searcher"
       placeholder="Search"
       style={{ marginBottom: 10 }}
       loading={loading}

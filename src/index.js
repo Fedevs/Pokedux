@@ -4,9 +4,9 @@ import { ConfigProvider } from 'antd';
 import App from './App';
 import { Provider } from 'react-redux';
 import { store } from './redux';
-import './index.css';
 import { RouterProvider } from 'react-router-dom';
 import { router } from 'router/router';
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
