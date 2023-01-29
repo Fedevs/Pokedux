@@ -1,0 +1,36 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+
+.logo-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo-container > img {
+  width: 180px;
+}
+
+@media (min-width: 300px) {
+  .logo-container > img {
+    width: 250px;
+  }
+}
+
+@media (min-width: 768px) {
+  .logo-container > img {
+    width: 300px;
+  }
+}
+
+.search-bar {
+  display: grid;
+  grid-template-columns: minmax(200px, 350px);
+  justify-content: center;
+  margin-bottom: 20px;
+}
