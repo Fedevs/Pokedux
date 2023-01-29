@@ -6,27 +6,20 @@ import './PokemonList.css';
 
 const PokemonList = ({ pokemons }) => {
   const loading = useSelector((state) => state.ui.loading);
+  const showSkeleton = loading || !pokemons.length;
 
   return (
     <div className="pokemon-list">
-      {loading
-        ? [...Array(8)].map((_, index) => {
-            const key = `skeleton-${index}`;
-            return <SkeletonPokemonCard key={key} />;
-          })
-        : pokemons.map((pokemon) => {
-            const sprite =
-              pokemon.sprites.other['official-artwork'].front_default;
-            return (
-              <PokemonCard
-                key={pokemon.name}
-                id={pokemon.id}
-                name={pokemon.name}
-                url={sprite}
-                isFavourite={pokemon.isFavourite}
-              />
-            );
-          })}
+      {showSkeleton && <SkeletonPokemonCard quantity={8} />}
+      {pokemons.map((pokemon) => (
+        <PokemonCard
+          key={pokemon.name}
+          id={pokemon.id}
+          name={pokemon.name}
+          url={pokemon.sprites.other['official-artwork'].front_default}
+          isFavourite={pokemon.isFavourite}
+        />
+      ))}
     </div>
   );
 };

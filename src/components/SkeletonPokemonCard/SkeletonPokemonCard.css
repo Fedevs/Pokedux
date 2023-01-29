@@ -1,3 +1,7 @@
+.skeleton-pokemon-card {
+  height: 343px;
+}
+
 .title-loading {
   -webkit-animation-direction: alternate;
   -webkit-animation-fill-mode: forwards;
