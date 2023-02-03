@@ -1,4 +1,4 @@
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
 import { HomeOutlined, StarOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,10 +12,22 @@ const Root = () => {
   const dispatch = useDispatch();
   const router = useLocation();
   const favouriteView = router.pathname === '/favourites';
+  const navigate = useNavigate();
 
   const handleOnChange = (evt) => {
     const name = evt.target.value;
     dispatch(setSearchText(name.toLowerCase()));
+  };
+
+  const handleRedirect = () => {
+    let path = '';
+    if (favouriteView) {
+      path = '/';
+    } else {
+      sessionStorage.setItem('useLoadedData', true);
+      path = '/favourites';
+    }
+    navigate(path);
   };
 
   return (
@@ -27,11 +39,10 @@ const Root = () => {
         <Searcher loading={loading} onChange={handleOnChange} />
         <nav className="nav">
           <li>
-            <Link to={favouriteView ? '' : 'favourites'}>
-              <Button
-                icon={favouriteView ? <HomeOutlined /> : <StarOutlined />}
-              />
-            </Link>
+            <Button
+              onClick={handleRedirect}
+              icon={favouriteView ? <HomeOutlined /> : <StarOutlined />}
+            />
           </li>
         </nav>
       </div>

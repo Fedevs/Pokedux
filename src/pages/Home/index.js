@@ -23,12 +23,16 @@ const Home = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchPokemonWithDetails(page));
+    const useCache = sessionStorage.getItem('useLoadedData') === 'true';
+    if (!useCache) {
+      dispatch(fetchPokemonWithDetails(page));
+    }
   }, [page]);
 
   const handleGenerationCardClick = (id, evt) => {
     if (page !== id) {
       evt.target.scrollIntoView();
+      sessionStorage.setItem('useLoadedData', false);
       dispatch(setPage(id));
     }
   };
