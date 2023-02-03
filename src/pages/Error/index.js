@@ -1,4 +1,4 @@
-import { useRouteError } from 'react-router-dom';
+import { useRouteError, Link } from 'react-router-dom';
 import errorImage from 'statics/temporaryError.png';
 import './ErrorPage.css';
 
@@ -10,6 +10,7 @@ const ErrorPage = () => {
       <p>
         <b>{error.statusText || error.message}</b>
       </p>
+      <Link to="/">Go Home</Link>
     </div>
   );
 };

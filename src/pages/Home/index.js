@@ -6,7 +6,7 @@ import PokemonList from 'components/PokemonList';
 import EmptyState from 'components/EmptyState';
 import GenerationCard from 'components/GenerationCard';
 
-import { fetchPokemonWithDetails, setPage } from '../../redux';
+import { fetchPokemonWithDetails, setPage, setPokemons } from '../../redux';
 import { pokemonGenerations } from 'constants/pokemonPerGeneration';
 
 import './Home.css';
@@ -23,8 +23,7 @@ const Home = () => {
   );
 
   useEffect(() => {
-    const useCache = sessionStorage.getItem('useLoadedData') === 'true';
-    if (!useCache) {
+    if (!pokemons.length) {
       dispatch(fetchPokemonWithDetails(page));
     }
   }, [page]);
@@ -32,9 +31,13 @@ const Home = () => {
   const handleGenerationCardClick = (id, evt) => {
     if (page !== id) {
       evt.target.scrollIntoView();
-      sessionStorage.setItem('useLoadedData', false);
+      deletePokemons();
       dispatch(setPage(id));
     }
+  };
+
+  const deletePokemons = () => {
+    dispatch(setPokemons([]));
   };
 
   return (
