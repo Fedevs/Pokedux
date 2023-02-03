@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        path: 'pokedux',
+        path: 'Pokedux',
         element: <Home />,
       },
       {

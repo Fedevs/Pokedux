@@ -27,7 +27,7 @@ const Root = () => {
         <Searcher loading={loading} onChange={handleOnChange} />
         <nav className="nav">
           <li>
-            <Link to={favouriteView ? 'pokedux' : 'favourites'}>
+            <Link to={favouriteView ? 'Pokedux' : 'favourites'}>
               <Button
                 icon={favouriteView ? <HomeOutlined /> : <StarOutlined />}
               />
