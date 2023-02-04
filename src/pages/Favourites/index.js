@@ -1,11 +1,23 @@
-import favImage from 'statics/temporaryFavourites.png';
-import './Favourites.css';
+import PokemonList from 'components/PokemonList';
+import EmptyState from 'components/EmptyState';
+import { useSelector } from 'react-redux';
 
 const Favourites = () => {
+  const favouritePokemons = useSelector(
+    (state) => state.data.favouritePokemons,
+  );
+  const searchText = useSelector((state) => state.data.searchText);
+  const filteredPokemons = favouritePokemons.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(searchText),
+  );
+
   return (
     <div className="favourites">
-      <h3>Not built yet</h3>
-      <img src={favImage} alt="favs" width={500} />{' '}
+      {favouritePokemons.length ? (
+        <PokemonList pokemons={filteredPokemons} />
+      ) : (
+        <EmptyState />
+      )}
     </div>
   );
 };

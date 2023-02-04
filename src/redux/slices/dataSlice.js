@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { setLoading } from './uiSlice';
 import { getPokemonDetails, getPokemons } from '../../api';
 
-const initialState = { pokemons: [], searchText: '' };
+const initialState = { pokemons: [], favouritePokemons: [], searchText: '' };
 
 export const fetchPokemonWithDetails = createAsyncThunk(
   'data/fetchPokemonsWithDetails',
@@ -17,11 +17,6 @@ export const fetchPokemonWithDetails = createAsyncThunk(
   },
 );
 
-const findFavouritePokemonByIndex = (pokemons, index) => {
-  const currentIndex = pokemons.findIndex((pokemon) => pokemon.id === index);
-  return currentIndex;
-};
-
 const dataSlice = createSlice({
   name: 'data',
   initialState,
@@ -30,14 +25,14 @@ const dataSlice = createSlice({
       state.pokemons = action.payload;
     },
     setFavourite: (state, action) => {
-      const currentIndex = findFavouritePokemonByIndex(
-        state.pokemons,
-        action.payload.pokemonID,
+      state.favouritePokemons = [...state.favouritePokemons, action.payload];
+    },
+    deleteFavourite: (state, action) => {
+      state.favouritePokemons = state.favouritePokemons.filter(
+        (favouritePokemon) => {
+          return favouritePokemon.id !== action.payload.id;
+        },
       );
-      if (currentIndex >= 0) {
-        state.pokemons[currentIndex].isFavourite =
-          !state.pokemons[currentIndex].isFavourite;
-      }
     },
     setSearchText: (state, action) => {
       state.searchText = action.payload;
@@ -45,5 +40,6 @@ const dataSlice = createSlice({
   },
 });
 
-export const { setFavourite, setPokemons, setSearchText } = dataSlice.actions;
+export const { setPokemons, setFavourite, deleteFavourite, setSearchText } =
+  dataSlice.actions;
 export default dataSlice.reducer;

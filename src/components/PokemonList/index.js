@@ -12,13 +12,7 @@ const PokemonList = ({ pokemons }) => {
     <div className="pokemon-list">
       {showSkeleton && <SkeletonPokemonCard quantity={8} />}
       {pokemons.map((pokemon) => (
-        <PokemonCard
-          key={pokemon.name}
-          id={pokemon.id}
-          name={pokemon.name}
-          url={pokemon.sprites.other['official-artwork'].front_default}
-          isFavourite={pokemon.isFavourite}
-        />
+        <PokemonCard key={pokemon.name} pokemon={pokemon} />
       ))}
     </div>
   );

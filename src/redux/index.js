@@ -2,8 +2,9 @@ export { store } from './store';
 
 export {
   dataReducer,
-  setFavourite,
   setPokemons,
+  setFavourite,
+  deleteFavourite,
   setSearchText,
   fetchPokemonWithDetails,
   uiReducer,

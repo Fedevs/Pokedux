@@ -1,7 +1,8 @@
 export {
   default as dataReducer,
-  setFavourite,
   setPokemons,
+  setFavourite,
+  deleteFavourite,
   setSearchText,
   fetchPokemonWithDetails,
 } from './dataSlice';

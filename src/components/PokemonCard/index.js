@@ -1,19 +1,29 @@
 import PropTypes from 'prop-types';
 import { Card } from 'antd';
 import StarButton from 'components/StarButton';
-import { useDispatch } from 'react-redux';
-import { setFavourite } from '../../redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteFavourite, setFavourite } from '../../redux';
 import './PokemonCard.css';
 
-const PokemonCard = ({ id, name, url, isFavourite }) => {
+const PokemonCard = ({ pokemon }) => {
   const dispatch = useDispatch();
+  const favouritePokemons = useSelector(
+    (state) => state.data.favouritePokemons,
+  );
+  const isFavourite = favouritePokemons.find(
+    (favouritePokemon) => favouritePokemon.id === pokemon.id,
+  );
 
   const headStyle = {
     boxShadow: '0px 1px 8px rgba(0, 0, 0, 0.1)',
   };
 
-  const handleisFavourite = () => {
-    dispatch(setFavourite({ pokemonID: id }));
+  const handleIsFavourite = () => {
+    if (isFavourite) {
+      dispatch(deleteFavourite(pokemon));
+    } else {
+      dispatch(setFavourite(pokemon));
+    }
   };
 
   return (
@@ -21,22 +31,24 @@ const PokemonCard = ({ id, name, url, isFavourite }) => {
       className="pokemon-card"
       headStyle={headStyle}
       hoverable
-      title={name}
+      title={pokemon.name}
       cover={
-        <img className="card-cover" src={url} alt={name} loading={'lazy'} />
+        <img
+          className="card-cover"
+          src={pokemon.sprites.other['official-artwork'].front_default}
+          alt={pokemon.name}
+          loading={'lazy'}
+        />
       }
       extra={
-        <StarButton isFavourite={isFavourite} onClick={handleisFavourite} />
+        <StarButton isFavourite={isFavourite} onClick={handleIsFavourite} />
       }
     ></Card>
   );
 };
 
 PokemonCard.propTypes = {
-  id: PropTypes.number,
-  name: PropTypes.string,
-  url: PropTypes.string,
-  isFavourite: PropTypes.bool,
+  pokemon: PropTypes.object,
 };
 
 export default PokemonCard;
