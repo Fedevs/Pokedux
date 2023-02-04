@@ -6,12 +6,12 @@ import Root from 'pages/Root';
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/Pokedux',
     element: <Root />,
     errorElement: <Error />,
     children: [
       {
-        path: 'Pokedux',
+        path: '',
         element: <Home />,
       },
       {
@@ -21,3 +21,8 @@ export const router = createBrowserRouter([
     ],
   },
 ]);
+
+export const namedPaths = {
+  home: '/Pokedux',
+  favourites: '/Pokedux/favourites',
+};

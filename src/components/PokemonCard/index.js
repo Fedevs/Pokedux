@@ -10,7 +10,7 @@ const PokemonCard = ({ pokemon }) => {
   const favouritePokemons = useSelector(
     (state) => state.data.favouritePokemons,
   );
-  const isFavourite = favouritePokemons.find(
+  const isFavourite = favouritePokemons.some(
     (favouritePokemon) => favouritePokemon.id === pokemon.id,
   );
 

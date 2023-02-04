@@ -6,7 +6,12 @@ import PokemonList from 'components/PokemonList';
 import EmptyState from 'components/EmptyState';
 import GenerationCard from 'components/GenerationCard';
 
-import { fetchPokemonWithDetails, setPage, setPokemons } from '../../redux';
+import {
+  fetchPokemonWithDetails,
+  setPage,
+  setPokemons,
+  setSearchText,
+} from '../../redux';
 import { pokemonGenerations } from 'constants/pokemonPerGeneration';
 
 import './Home.css';
@@ -32,12 +37,17 @@ const Home = () => {
     if (page !== id) {
       evt.target.scrollIntoView();
       deletePokemons();
+      emptySearchText();
       dispatch(setPage(id));
     }
   };
 
   const deletePokemons = () => {
     dispatch(setPokemons([]));
+  };
+
+  const emptySearchText = () => {
+    dispatch(setSearchText(''));
   };
 
   return (

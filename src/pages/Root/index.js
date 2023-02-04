@@ -4,6 +4,7 @@ import { HomeOutlined, StarOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import Searcher from 'components/Searcher';
 import { setSearchText } from '../../redux';
+import { namedPaths } from 'router/router';
 import logo from 'statics/logo.svg';
 import './Root.css';
 
@@ -11,7 +12,7 @@ const Root = () => {
   const loading = useSelector((state) => state.ui.loading);
   const dispatch = useDispatch();
   const router = useLocation();
-  const favouriteView = router.pathname === '/favourites';
+  const favouriteView = router.pathname === namedPaths.favourites;
 
   const handleOnChange = (evt) => {
     const name = evt.target.value;
@@ -21,7 +22,7 @@ const Root = () => {
   return (
     <div className="root">
       <div className="logo-container">
-        <Link to="/Pokedux">
+        <Link to={namedPaths.home}>
           <img src={logo} alt="Pokedux" />
         </Link>
       </div>
@@ -29,7 +30,7 @@ const Root = () => {
         <Searcher loading={loading} onChange={handleOnChange} />
         <nav className="nav">
           <li>
-            <Link to={favouriteView ? 'Pokedux' : 'favourites'}>
+            <Link to={favouriteView ? namedPaths.home : namedPaths.favourites}>
               <Button
                 icon={favouriteView ? <HomeOutlined /> : <StarOutlined />}
               />

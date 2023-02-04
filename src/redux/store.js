@@ -6,7 +6,7 @@ const configureStoreOptions = {
   reducer: { data: dataReducer, ui: uiReducer, pagination: paginationReducer },
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false, devTools: true })
+    getDefaultMiddleware({ serializableCheck: false })
       .concat(logger)
       .concat(CapitalizePokemonName),
 };

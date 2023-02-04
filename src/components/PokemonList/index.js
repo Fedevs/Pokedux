@@ -6,11 +6,10 @@ import './PokemonList.css';
 
 const PokemonList = ({ pokemons }) => {
   const loading = useSelector((state) => state.ui.loading);
-  const showSkeleton = loading || !pokemons.length;
 
   return (
     <div className="pokemon-list">
-      {showSkeleton && <SkeletonPokemonCard quantity={8} />}
+      {loading && <SkeletonPokemonCard quantity={8} />}
       {pokemons.map((pokemon) => (
         <PokemonCard key={pokemon.name} pokemon={pokemon} />
       ))}
