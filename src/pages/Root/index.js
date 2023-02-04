@@ -21,7 +21,9 @@ const Root = () => {
   return (
     <div className="root">
       <div className="logo-container">
-        <img src={logo} alt="Pokedux" />
+        <Link to="/Pokedux">
+          <img src={logo} alt="Pokedux" />
+        </Link>
       </div>
       <div className="search-bar">
         <Searcher loading={loading} onChange={handleOnChange} />
