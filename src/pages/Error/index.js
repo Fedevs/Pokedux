@@ -6,7 +6,7 @@ const ErrorPage = () => {
   const error = useRouteError();
   return (
     <div className="error-page">
-      <img src={errorImage} alt="error" />
+      <img src={errorImage} alt="error" width={200} height={200} />
       <p>
         <b>{error.statusText || error.message}</b>
       </p>

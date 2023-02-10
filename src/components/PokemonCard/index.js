@@ -37,6 +37,8 @@ const PokemonCard = ({ pokemon }) => {
           className="card-cover"
           src={pokemon.sprites.other['official-artwork'].front_default}
           alt={pokemon.name}
+          width={200}
+          height={200}
           loading={'lazy'}
         />
       }

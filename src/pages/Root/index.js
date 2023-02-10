@@ -23,7 +23,7 @@ const Root = () => {
     <div className="root">
       <div className="logo-container">
         <Link to={namedPaths.home}>
-          <img src={logo} alt="Pokedux" />
+          <img src={logo} alt="Pokedux" width={300} height={100} />
         </Link>
       </div>
       <div className="search-bar">
