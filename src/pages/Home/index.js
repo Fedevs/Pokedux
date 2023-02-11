@@ -6,42 +6,46 @@ import PokemonList from 'components/PokemonList';
 import EmptyState from 'components/EmptyState';
 import GenerationCard from 'components/GenerationCard';
 
-import { fetchPokemonWithDetails, setPage, setSearchText } from '../../redux';
+import {
+  fetchPokemonWithDetails,
+  setGeneration,
+  setSearchText,
+} from '../../redux';
 import { pokemonGenerations } from 'constants/pokemonPerGeneration';
 
 import './Home.css';
 
 const Home = () => {
   const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
-  const page = useSelector((state) => state.pagination.page);
+  const generation = useSelector((state) => state.pagination.generation);
   const searchText = useSelector((state) => state.data.searchText);
   const loading = useSelector((state) => state.ui.loading);
   const dispatch = useDispatch();
 
   let filteredPokemons =
-    pokemons[page]?.filter((pokemon) =>
+    pokemons[generation]?.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(searchText),
     ) || [];
 
   useEffect(() => {
     cacheOrFetch();
-  }, [page]);
+  }, [generation]);
 
   /**
    * Decide whether using cache or fetching new data to display pokemons
    */
   const cacheOrFetch = () => {
-    if (pokemons[page]?.length) {
-      filteredPokemons = pokemons[page];
+    if (pokemons[generation]?.length) {
+      filteredPokemons = pokemons[generation];
     } else {
-      dispatch(fetchPokemonWithDetails(page));
+      dispatch(fetchPokemonWithDetails(generation));
     }
   };
 
   const handleGenerationCardClick = (id, evt) => {
     evt.target.scrollIntoView();
     searchText && emptySearchText();
-    page !== id && dispatch(setPage(id));
+    generation !== id && dispatch(setGeneration(id));
   };
 
   const emptySearchText = () => {
@@ -51,13 +55,13 @@ const Home = () => {
   return (
     <div className="home">
       <div className="generation-card-container">
-        {pokemonGenerations.map((generation) => {
+        {pokemonGenerations.map(({ id, place }) => {
           return (
             <GenerationCard
-              key={generation.id}
-              id={generation.id}
-              place={generation.place}
-              page={page}
+              key={id}
+              id={id}
+              place={place}
+              generation={generation}
               onClick={handleGenerationCardClick}
             />
           );

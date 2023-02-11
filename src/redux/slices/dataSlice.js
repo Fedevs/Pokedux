@@ -6,14 +6,14 @@ const initialState = { pokemons: {}, favouritePokemons: [], searchText: '' };
 
 export const fetchPokemonWithDetails = createAsyncThunk(
   'data/fetchPokemonsWithDetails',
-  async (page, { dispatch }) => {
+  async (generation, { dispatch }) => {
     dispatch(setLoading(true));
-    const pokemons = await getPokemons(page);
+    const pokemons = await getPokemons(generation);
     const pokemonsDetails = await Promise.all(
       pokemons.map((pokemon) => getPokemonDetails(pokemon)),
     );
 
-    dispatch(setPokemons({ pokemonsList: pokemonsDetails, page }));
+    dispatch(setPokemons({ pokemonsList: pokemonsDetails, generation }));
     dispatch(setLoading(false));
   },
 );
@@ -23,7 +23,7 @@ const dataSlice = createSlice({
   initialState,
   reducers: {
     setPokemons: (state, action) => {
-      const property = action.payload.page;
+      const property = action.payload.generation;
       state.pokemons[property] = action.payload.pokemonsList;
     },
     setFavourite: (state, action) => {

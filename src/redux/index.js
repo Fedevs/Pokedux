@@ -10,5 +10,5 @@ export {
   uiReducer,
   setLoading,
   paginationReducer,
-  setPage,
+  setGeneration,
 } from './slices';

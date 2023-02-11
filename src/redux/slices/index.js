@@ -7,4 +7,4 @@ export {
   fetchPokemonWithDetails,
 } from './dataSlice';
 export { default as uiReducer, setLoading } from './uiSlice';
-export { default as paginationReducer, setPage } from './paginationSlice';
+export { default as paginationReducer, setGeneration } from './paginationSlice';
