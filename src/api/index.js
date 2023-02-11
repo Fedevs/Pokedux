@@ -1,15 +1,15 @@
 import { pokemonGenerations } from 'constants/pokemonPerGeneration';
 
-export const getPokemons = async (generation) => {
-  const { offset, limit } = pokemonGenerations.find(
-    (pokemonGeneration) => pokemonGeneration.id === generation,
-  );
-  const API_URL = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}}`;
+export const getPokemons = async (generation, currentPage, resultsPerPage) => {
+  const pageInfo = getPageInformation(generation, resultsPerPage);
+  const API_URL = `https://pokeapi.co/api/v2/pokemon?offset=${
+    pageInfo.offset
+  }&limit=${resultsPerPage * currentPage}`;
   try {
     const response = await fetch(API_URL);
     if (response.ok) {
       let { results } = await response.json();
-      return results;
+      return { pokemons: results, pageInfo };
     }
   } catch (error) {
     console.log(error);
@@ -26,4 +26,15 @@ export const getPokemonDetails = async (pokemon) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+const getPageInformation = (generation, resultsPerPage) => {
+  const data = pokemonGenerations.find(
+    (pokemonGeneration) => pokemonGeneration.id === generation,
+  );
+  const pageInformation = {
+    totalPages: Math.ceil(data.pokemonsCounter / resultsPerPage),
+    offset: data.offset,
+  };
+  return pageInformation;
 };

@@ -1,19 +1,32 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { setLoading } from './uiSlice';
 import { getPokemonDetails, getPokemons } from '../../api';
+import { setCurrentPage, setTotalPages } from './paginationSlice';
 
 const initialState = { pokemons: {}, favouritePokemons: [], searchText: '' };
 
 export const fetchPokemonWithDetails = createAsyncThunk(
   'data/fetchPokemonsWithDetails',
-  async (generation, { dispatch }) => {
+  async ({ generation, page }, { dispatch, getState }) => {
     dispatch(setLoading(true));
-    const pokemons = await getPokemons(generation);
+    const { resultsPerPage } = getState().pagination;
+    const { pokemons, pageInfo } = await getPokemons(
+      generation,
+      page,
+      resultsPerPage,
+    );
     const pokemonsDetails = await Promise.all(
       pokemons.map((pokemon) => getPokemonDetails(pokemon)),
     );
 
+    // Data slice
     dispatch(setPokemons({ pokemonsList: pokemonsDetails, generation }));
+
+    // Pagination slice
+    dispatch(setCurrentPage(page));
+    dispatch(setTotalPages(pageInfo.totalPages));
+
+    //UI slice
     dispatch(setLoading(false));
   },
 );

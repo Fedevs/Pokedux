@@ -38,7 +38,7 @@ const Home = () => {
     if (pokemons[generation]?.length) {
       filteredPokemons = pokemons[generation];
     } else {
-      dispatch(fetchPokemonWithDetails(generation));
+      dispatch(fetchPokemonWithDetails({ generation, page: 1 }));
     }
   };
 

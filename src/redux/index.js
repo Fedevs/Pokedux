@@ -11,4 +11,6 @@ export {
   setLoading,
   paginationReducer,
   setGeneration,
+  setCurrentPage,
+  setTotalPages,
 } from './slices';
