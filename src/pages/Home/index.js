@@ -6,44 +6,42 @@ import PokemonList from 'components/PokemonList';
 import EmptyState from 'components/EmptyState';
 import GenerationCard from 'components/GenerationCard';
 
-import {
-  fetchPokemonWithDetails,
-  setPage,
-  setPokemons,
-  setSearchText,
-} from '../../redux';
+import { fetchPokemonWithDetails, setPage, setSearchText } from '../../redux';
 import { pokemonGenerations } from 'constants/pokemonPerGeneration';
 
 import './Home.css';
 
 const Home = () => {
   const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
-  const searchText = useSelector((state) => state.data.searchText);
   const page = useSelector((state) => state.pagination.page);
+  const searchText = useSelector((state) => state.data.searchText);
   const loading = useSelector((state) => state.ui.loading);
-
   const dispatch = useDispatch();
-  const filteredPokemons = pokemons.filter((pokemon) =>
-    pokemon.name.toLowerCase().includes(searchText),
-  );
+
+  let filteredPokemons =
+    pokemons[page]?.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchText),
+    ) || [];
 
   useEffect(() => {
-    if (!pokemons.length) {
-      dispatch(fetchPokemonWithDetails(page));
-    }
+    cacheOrFetch();
   }, [page]);
 
-  const handleGenerationCardClick = (id, evt) => {
-    if (page !== id) {
-      evt.target.scrollIntoView();
-      deletePokemons();
-      emptySearchText();
-      dispatch(setPage(id));
+  /**
+   * Decide whether using cache or fetching new data to display pokemons
+   */
+  const cacheOrFetch = () => {
+    if (pokemons[page]?.length) {
+      filteredPokemons = pokemons[page];
+    } else {
+      dispatch(fetchPokemonWithDetails(page));
     }
   };
 
-  const deletePokemons = () => {
-    dispatch(setPokemons([]));
+  const handleGenerationCardClick = (id, evt) => {
+    evt.target.scrollIntoView();
+    searchText && emptySearchText();
+    page !== id && dispatch(setPage(id));
   };
 
   const emptySearchText = () => {
@@ -66,7 +64,7 @@ const Home = () => {
         })}
       </div>
       <PokemonList pokemons={filteredPokemons} />
-      {!loading && !filteredPokemons.length && <EmptyState />}
+      {!loading && !filteredPokemons?.length && <EmptyState />}
     </div>
   );
 };
