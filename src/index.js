@@ -19,13 +19,11 @@ const themeOptions = {
 };
 
 root.render(
-  <React.StrictMode>
-    <ConfigProvider theme={themeOptions}>
-      <Provider store={store}>
-        <RouterProvider router={router}>
-          <App />
-        </RouterProvider>
-      </Provider>
-    </ConfigProvider>
-  </React.StrictMode>,
+  <ConfigProvider theme={themeOptions}>
+    <Provider store={store}>
+      <RouterProvider router={router}>
+        <App />
+      </RouterProvider>
+    </Provider>
+  </ConfigProvider>,
 );

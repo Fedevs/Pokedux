@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   generation: 1,
-  currentPage: 1,
+  currentPage: 0,
   totalPages: 13,
   resultsPerPage: 12,
 };

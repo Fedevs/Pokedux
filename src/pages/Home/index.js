@@ -8,6 +8,7 @@ import GenerationCard from 'components/GenerationCard';
 
 import {
   fetchPokemonWithDetails,
+  setCurrentPage,
   setGeneration,
   setSearchText,
 } from '../../redux';
@@ -17,28 +18,29 @@ import './Home.css';
 
 const Home = () => {
   const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
-  const generation = useSelector((state) => state.pagination.generation);
   const searchText = useSelector((state) => state.data.searchText);
+  const generation = useSelector((state) => state.pagination.generation);
+  const currentPage = useSelector((state) => state.pagination.currentPage);
+  const resultsPerPage = useSelector(
+    (state) => state.pagination.resultsPerPage,
+  );
   const loading = useSelector((state) => state.ui.loading);
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   let filteredPokemons =
     pokemons[generation]?.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(searchText),
     ) || [];
 
   useEffect(() => {
-    cacheOrFetch();
+    fetchOrCache();
   }, [generation]);
 
-  /**
-   * Decide whether using cache or fetching new data to display pokemons
-   */
-  const cacheOrFetch = () => {
+  const fetchOrCache = () => {
     if (pokemons[generation]?.length) {
       filteredPokemons = pokemons[generation];
     } else {
-      dispatch(fetchPokemonWithDetails({ generation, page: 1 }));
+      dispatch(fetchPokemonWithDetails({ generation: generation, page: 1 }));
     }
   };
 
@@ -46,10 +48,19 @@ const Home = () => {
     evt.target.scrollIntoView();
     searchText && emptySearchText();
     generation !== id && dispatch(setGeneration(id));
+    dispatch(setCurrentPage(getPokemonPageByGeneration()));
+  };
+
+  const getPokemonPageByGeneration = () => {
+    return Math.floor(pokemons[generation].length / resultsPerPage);
   };
 
   const emptySearchText = () => {
     dispatch(setSearchText(''));
+  };
+
+  const fetchMore = () => {
+    dispatch(fetchPokemonWithDetails({ generation, page: currentPage + 1 }));
   };
 
   return (
@@ -69,6 +80,7 @@ const Home = () => {
       </div>
       <PokemonList pokemons={filteredPokemons} />
       {!loading && !filteredPokemons?.length && <EmptyState />}
+      <button onClick={fetchMore}>Cargar mas</button>
     </div>
   );
 };

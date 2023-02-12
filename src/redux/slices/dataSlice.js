@@ -36,8 +36,11 @@ const dataSlice = createSlice({
   initialState,
   reducers: {
     setPokemons: (state, action) => {
-      const property = action.payload.generation;
-      state.pokemons[property] = action.payload.pokemonsList;
+      const { generation, pokemonsList } = action.payload;
+      state.pokemons = {
+        ...state.pokemons,
+        [generation]: [...(state.pokemons[generation] || []), ...pokemonsList],
+      };
     },
     setFavourite: (state, action) => {
       state.favouritePokemons = [...state.favouritePokemons, action.payload];
