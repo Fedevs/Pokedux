@@ -20,7 +20,7 @@ const Home = () => {
   const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
   const searchText = useSelector((state) => state.data.searchText);
   const generation = useSelector((state) => state.pagination.generation);
-  const currentPage = useSelector((state) => state.pagination.currentPage);
+
   const resultsPerPage = useSelector(
     (state) => state.pagination.resultsPerPage,
   );
@@ -59,10 +59,6 @@ const Home = () => {
     dispatch(setSearchText(''));
   };
 
-  const fetchMore = () => {
-    dispatch(fetchPokemonWithDetails({ generation, page: currentPage + 1 }));
-  };
-
   return (
     <div className="home">
       <div className="generation-card-container">
@@ -78,9 +74,8 @@ const Home = () => {
           );
         })}
       </div>
-      <PokemonList pokemons={filteredPokemons} />
+      <PokemonList pokemons={filteredPokemons} generation={generation} />
       {!loading && !filteredPokemons?.length && <EmptyState />}
-      <button onClick={fetchMore}>Cargar mas</button>
     </div>
   );
 };
