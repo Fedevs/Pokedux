@@ -7,12 +7,21 @@ import { setSearchText } from '../../redux';
 import { namedPaths } from 'router/namedPaths';
 import logo from 'statics/logo.svg';
 import './Root.css';
+import { useEffect } from 'react';
 
 const Root = () => {
   const loading = useSelector((state) => state.ui.loading);
   const dispatch = useDispatch();
   const router = useLocation();
   const favouriteView = router.pathname === namedPaths.favourites;
+
+  useEffect(() => {
+    dispatch(setSearchText(''));
+  }, [favouriteView]);
+
+  const handleRedirect = () => {
+    return favouriteView ? namedPaths.home : namedPaths.favourites;
+  };
 
   const handleOnChange = (evt) => {
     const name = evt.target.value;
@@ -30,7 +39,7 @@ const Root = () => {
         <Searcher loading={loading} onChange={handleOnChange} />
         <nav className="nav">
           <li>
-            <Link to={favouriteView ? namedPaths.home : namedPaths.favourites}>
+            <Link to={handleRedirect()}>
               <Button
                 icon={favouriteView ? <HomeOutlined /> : <StarOutlined />}
               />
