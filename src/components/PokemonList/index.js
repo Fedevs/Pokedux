@@ -5,20 +5,29 @@ import { useSelector, useDispatch } from 'react-redux';
 import './PokemonList.css';
 import { fetchPokemonWithDetails } from '../../redux';
 import { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
+import { namedPaths } from 'router/namedPaths';
 
 const PokemonList = ({ pokemons, generation }) => {
   const pokemonListRef = useRef(null);
+  const { pathname } = useLocation();
   const loading = useSelector((state) => state.ui.loading);
   const currentPage = useSelector((state) => state.pagination.currentPage);
   const totalPages = useSelector((state) => state.pagination.totalPages);
   const searchText = useSelector((state) => state.data.searchText);
-  const allowInfiniteScroll =
-    currentPage < totalPages && !loading && searchText === '';
+
+  const allowInfiniteScroll = () => {
+    const lastPage = currentPage === totalPages;
+    const nonFilteredPokemons = searchText === '';
+    const isFavouriteView = pathname === namedPaths.favourites;
+
+    return !lastPage && nonFilteredPokemons && !loading && !isFavouriteView;
+  };
 
   const dispatch = useDispatch();
 
   const fetchMore = () => {
-    if (allowInfiniteScroll) {
+    if (allowInfiniteScroll()) {
       dispatch(fetchPokemonWithDetails({ generation, page: currentPage + 1 }));
       // To avoid multiple refetching
       window.scrollBy(0, -5);
@@ -59,7 +68,7 @@ const PokemonList = ({ pokemons, generation }) => {
       {pokemons.map((pokemon) => (
         <PokemonCard key={pokemon.name} pokemon={pokemon} />
       ))}
-      {allowInfiniteScroll && <SkeletonPokemonCard quantity={4} />}
+      {allowInfiniteScroll() && <SkeletonPokemonCard quantity={4} />}
     </div>
   );
 };

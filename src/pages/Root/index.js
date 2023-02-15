@@ -4,7 +4,7 @@ import { HomeOutlined, StarOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import Searcher from 'components/Searcher';
 import { setSearchText } from '../../redux';
-import { namedPaths } from 'router/router';
+import { namedPaths } from 'router/namedPaths';
 import logo from 'statics/logo.svg';
 import './Root.css';
 
