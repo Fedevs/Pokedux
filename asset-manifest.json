@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Pokedux/static/css/main.7dfa5e19.css",
-    "main.js": "/Pokedux/static/js/main.a6dd9580.js",
+    "main.css": "/Pokedux/static/css/main.40c89494.css",
+    "main.js": "/Pokedux/static/js/main.fc177140.js",
     "static/media/logo.svg": "/Pokedux/static/media/logo.0905522d6d18ceaafa60a31e87c99e88.svg",
-    "static/media/temporaryError.png": "/Pokedux/static/media/temporaryError.bdb861dd8a2cfb640c8a.png",
-    "static/media/background.png": "/Pokedux/static/media/background.ebbe293a3ddccc88bd03.png",
+    "static/media/angryPikachu.webp": "/Pokedux/static/media/angryPikachu.a245353bef3f60f07618.webp",
+    "static/media/background.webp": "/Pokedux/static/media/background.40bcfba510d8f92d196b.webp",
     "static/media/pokeball.webp": "/Pokedux/static/media/pokeball.c767ba469904a7e0fcbf.webp",
-    "static/media/emptyball.webp": "/Pokedux/static/media/emptyball.832afd1e43826ed33294.webp",
+    "static/media/emptyBall.webp": "/Pokedux/static/media/emptyBall.832afd1e43826ed33294.webp",
     "index.html": "/Pokedux/index.html",
-    "main.7dfa5e19.css.map": "/Pokedux/static/css/main.7dfa5e19.css.map",
-    "main.a6dd9580.js.map": "/Pokedux/static/js/main.a6dd9580.js.map"
+    "main.40c89494.css.map": "/Pokedux/static/css/main.40c89494.css.map",
+    "main.fc177140.js.map": "/Pokedux/static/js/main.fc177140.js.map"
   },
   "entrypoints": [
-    "static/css/main.7dfa5e19.css",
-    "static/js/main.a6dd9580.js"
+    "static/css/main.40c89494.css",
+    "static/js/main.fc177140.js"
   ]
 }
