@@ -15,7 +15,7 @@ npm start # Start the development server
 or
 
 [DOCKER](https://docs.docker.com/compose/gettingstarted/)
-```
+```bash
 git clone https://github.com/Fedevs/Pokedux.git # Clone the repo
 cd Pokedux # Navigate to the project folder
 docker compose up # Build a container and run the app
