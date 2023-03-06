@@ -5,6 +5,11 @@
   justify-content: center;
 }
 
+.title {
+  font-size: 25px;
+  text-align: center;
+}
+
 .go-home {
   border-radius: 6px;
   border: 1px solid #63288f;

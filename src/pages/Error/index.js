@@ -8,11 +8,11 @@ const ErrorPage = () => {
     <div className="error-page">
       <img src={errorImage} alt="error" width={200} height={200} />
       <p>
-        <h1>
+        <h1 className="title">
           <b>Oops! It seems you are lost</b>
         </h1>
       </p>
-      <Link to={namedPaths.home} class="go-home">
+      <Link to={namedPaths.home} className="go-home">
         Go Home
       </Link>
     </div>
