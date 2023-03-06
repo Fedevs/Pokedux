@@ -5,7 +5,8 @@ This project is a web application that simulates a Pokedex using the technologie
 
 To install this project on your local machine, follow these steps:
 
-[NODE - NPM](https://nodejs.org/es/download/)
+<a href="https://nodejs.org/es/download/" target="_blank">NODE - NPM</a>
+
 ```bash
 git clone https://github.com/Fedevs/Pokedux.git # Clone the repo
 cd Pokedux # Navigate to the project folder
@@ -14,7 +15,8 @@ npm start # Start the development server
 ```
 or
 
-[DOCKER](https://docs.docker.com/compose/gettingstarted/)
+<a href="https://docs.docker.com/compose/gettingstarted/" target="_blank">DOCKER</a>
+
 ```bash
 git clone https://github.com/Fedevs/Pokedux.git # Clone the repo
 cd Pokedux # Navigate to the project folder
