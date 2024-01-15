@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "src": "/pokedux",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/pokedux/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
