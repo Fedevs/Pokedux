@@ -15,22 +15,21 @@ const PokemonList = ({ pokemons, generation }) => {
   const currentPage = useSelector((state) => state.pagination.currentPage);
   const totalPages = useSelector((state) => state.pagination.totalPages);
   const searchText = useSelector((state) => state.data.searchText);
+  const firstTime = pokemons.length === 0;
 
   const allowInfiniteScroll = () => {
     const lastPage = currentPage === totalPages;
     const nonFilteredPokemons = searchText === '';
     const isFavouriteView = pathname === namedPaths.favourites;
 
-    return !lastPage && nonFilteredPokemons && !loading && !isFavouriteView;
+    return !lastPage && nonFilteredPokemons && !isFavouriteView;
   };
 
   const dispatch = useDispatch();
 
   const fetchMore = () => {
-    if (allowInfiniteScroll()) {
+    if (allowInfiniteScroll() && !loading) {
       dispatch(fetchPokemonWithDetails({ generation, page: currentPage + 1 }));
-      // To avoid multiple refetching
-      window.scrollBy(0, -5);
     }
   };
 
@@ -44,8 +43,8 @@ const PokemonList = ({ pokemons, generation }) => {
           }
         });
       },
-      // The element should be 100% visible
-      { threshold: 1 },
+      // The element should be 10% visible
+      { threshold: 0.1 },
     );
 
     // Watching list last element
@@ -64,7 +63,7 @@ const PokemonList = ({ pokemons, generation }) => {
 
   return (
     <div className="pokemon-list" ref={pokemonListRef}>
-      {loading && <SkeletonPokemonCard quantity={8} />}
+      {firstTime && <SkeletonPokemonCard quantity={8} />}
       {pokemons.map((pokemon) => (
         <PokemonCard key={pokemon.name} pokemon={pokemon} />
       ))}
