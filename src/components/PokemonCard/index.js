@@ -35,7 +35,10 @@ const PokemonCard = ({ pokemon }) => {
       cover={
         <img
           className="card-cover"
-          src={pokemon.sprites.other['official-artwork'].front_default}
+          src={
+            pokemon.sprites.other['dream_world'].front_default ||
+            pokemon.sprites.other['official-artwork'].front_default
+          }
           alt={pokemon.name}
           width={200}
           height={200}
