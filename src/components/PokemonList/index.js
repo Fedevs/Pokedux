@@ -15,7 +15,7 @@ const PokemonList = ({ pokemons, generation }) => {
   const currentPage = useSelector((state) => state.pagination.currentPage);
   const totalPages = useSelector((state) => state.pagination.totalPages);
   const searchText = useSelector((state) => state.data.searchText);
-  const firstTime = pokemons.length === 0;
+  const firstTime = pokemons.length === 0 && searchText === '';
 
   const allowInfiniteScroll = () => {
     const lastPage = currentPage === totalPages;
